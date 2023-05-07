@@ -1,7 +1,7 @@
-# Wasm (Exotic Runtime Target)
+# wasm
 
 subtitle
-:   Ruby and Wasm on Kubernetes and GitOps Delivery Pipelines
+:   Exotic Runtime Targets for GitOps Delivery Pipelines (wasm, ruby, k8s, gitops)
 
 author
 :   Kingdon Barrett
@@ -30,8 +30,9 @@ end-time
 Gotta go pretty fast
 
 * Try not to talk so fast
-* Don't want to lose everyone
-* We're going to talk about Wasm
+* Don't want to lose you
+* Many twists and turns
+* Rabbit-shocker timer to help keep honest!
 
 # Intro
 
@@ -50,27 +51,31 @@ Gotta go pretty fast
 
 # Flux
 
-* Flux Bug Scrub - weekly(ish) for over a year
-* You need an Open Source Support Engineer
-* (Someone that uses your OSS deeply)
-* Find Flux at GitOpsCon/OSS Summit
+* Flux Bug Scrub - weekly [fluxcd.io/#calendar][]
+* ?: OS _Support_ Engineer
+* (I use our OSS deeply)
+* Lean into OSS solutions
+
+[fluxcd.io/#calendar]: https://fluxcd.io/#calendar
 
 # Flux Talks
 
-![](images/fluxqr.jpeg "QR Code"){:width='100' height='100'}
+![](images/fluxqr.jpeg "bit.ly/gitopscon2023"){:width='350' height='350'}
 
 # Intro (me)
 
 * On YouTube - I'm new here
 * Let's Study: Arabic
-* Cloud Jockey: %radio ⚡️🌩️🌀🌩️⚡️
+* Cloud Jockey: %radio ⚡️🌩️🌀
 * Live Coding: Ruby + Kubernetes
+* Plz mash like & subscribe
 
 # Wasm and Ruby
 
 * *What is this for*
 * What is "untrusted code"
 * Why do we want to run it
+* Healthy skepticism about (even our own) code
 
 # Ruby
 
@@ -87,38 +92,75 @@ Gotta go pretty fast
 * Portable artifacts
   * with language independence
 
+# Why Wasm
+
+* Frankly I cannot sell Wasm
+* No commission either
+* If you take it, I get nothing
+* I think it will be useful
+* Let's find out together
+
+# Why Kubernetes
+
+* For Flux and GitOps
+* If you chose Kubernetes, you already know why you did (!)
+* Declarative, versioned, immutable artifacts
+* Self-healing infrastructure
+
 # Compiled Languages
 
 * Rust
 * Go
 * JavaScript, TypeScript
 * C#
-* ...
+* ... (value for you all as well)
+
+# Why Ruby
+
+* I used Ruby since 2002(?)
+* Comfort and familiarity
+* Top Notch Debugging ++
+* Bundler, Fibers, Ruby 3.0
+* for faster time to market
+
+# Ruby Solutions
+
+* To run a website
+* To connect a database
+* scrape content from internet
+* To build an IRC bot
+* No compiler needed, duck typing, object orientation
 
 # Web Assembly in Ruby
 
-* Ruby is an interpreted language
-* wasmer-ruby
-* wasmtime-rb
+* Ruby is interpreted language
+* gem: wasmer-ruby
+* gem: wasmtime-rb
 * Run Web Assemblies in Ruby
 * What is a Web Assembly?
 
 # Bytecode Runtime Format
 
-* Can you run Ruby in Web Assembly?
+* Can run Ruby in Wasm?
 * Yes, but first...
-* Web Assembly is a binary
-  * You can run it
-* Web Assembly is also a library
+* Wasm is a binary format
+* Wasm also builds libraries
   * Include it in other programs
+
+# Ruby in Ruby?
+
+* Consider not doing this
+* No theoretical benefit afaict
+* It was the first thing I tried
+* I could not make it work
+* Let's try the other thing
 
 # Web Assembly
 
 * Call functions from it
 * Ship memory around
 * Export functions to it
-* Use a compiler
-* Or...
+* Use a compiler, or...
 * System Interface (WASI)
 
 # Features: Format
@@ -131,19 +173,24 @@ Gotta go pretty fast
 
 # Omitted Features
 
-* Wasm does not have a string type
-* Numbers and well-defined data structures
-* You can allocate memory and make a pointer
-* Keep the length around
+* Wasm has no string type
+* Numbers and well-defined data structures only(ish)
+* Allocate memory, make ptr
+* Pass ptr to str+length/size
 
 # Ruby and pointers
 
 * I don't want to do pointer math at all
-* Could not figure out how to do:
+* Could not figure out how do:
   * Wasm as library
-* I spent some time on this
+* I spent some time on this, couldn't figure unfortunately
+
+# Ruby and Wasm lib
+
+* I need string return values
 * Reverted to WASI
 * We can parse the output 👍
+* Now let's try to solve a real problem
 
 # What is Spin?
 
@@ -161,27 +208,105 @@ Gotta go pretty fast
 * (Run on Hippo Factory)
   * ~~This is OSS Summit!~~
 
+# What is Spin?
+
+* Fermyon "Serverless" framework
+* Test locally
+* Run on Fermyon Cloud
+* (Run on Hippo Factory)
+  * This is GitOpsCon!
+
 # Why are we here?
 
 * Hope to gain:
 * Testability
 * Reusability
-* Type safety between languages
+* Type safety btw languages
+* Capacity for polyglot teams
 
 # How about we dive in?
 
 * I built some things in Wasm
-* Here's what not to do
-* I needed to break misconceptions
+* Break misconceptions
+* Follow good examples
 * How are we going to use this?
+* Let's solve real problem now
+
+# Problem to explore
+
+* GitHub Packages problem - DX Engineer solution
+* fluxcd/flagger/
+* [pkgs/container/flagger][]
+* Need to know how many downloads for each package
+
+[pkgs/container/flagger]: https://github.com/fluxcd/flagger/pkgs/container/flagger
 
 # I built some things
 
-* EKS cluster: [kingdonb/eks-cluster][]
+* EKS cluster: Find on GitHub [kingdonb/eks-cluster][]
   * with Flux bootstrap (eksctl+flux 2.0.0-rc.2)
-* 
+
+# I built some things
+
+* Blog service: GitHub [kingdonb/taking-bartholo][]
+  * GitOps enabled via Helm Controller
+  * Helm + Helmet library chart
+  * At this point I began to understand
+    * Why Fermyon isn't using K8s or Helm?
+    * This would be really hard without Flux
+
+# I built more things
+
+* Kubernetes operator: [kingdonb/stats-tracker-ghcr][]
+  * Fetch from URL (in ruby)
+  * Parse HTML (in rust)
+  * Return number as string (WASI!)
+  * Parse number (we're back in Ruby)
+
+# Based on
+
+* Kubernetes operator: (GitLab) [tobiaskuntzsch/kubernetes-operator][]
+  * Wonderful example for learning about Operators with Ruby
+  * Register CRD, Register `upsert`
+  * Register `delete` - manages your Finalizers
+
+# Based on (dependency)
+
+* Kubeclient gem: GitHub [ManageIQ/kubeclient][]
+  * Also easy to use
+  * Server-side apply only (!)
+
+# Out of time
+
+* Lightning talk - Fin
+* Dive into these topics in more depth
+  * OSS Summit
+  * More Ruby: Wednesday
+  * Go, TypeScript: Thursday
+
+# Operator isn't finished
+
+* Let's do it live (today)
+* On YouTube
+* (We'll hear how it went tomorrow)
+* It is really 98% finished already :D
+
+# Let's do it live
+
+* I wrote this in an hour live
+* Code is there
+* Only missing a tiny bit
+* My first Rust program!
+
+# Thank You
+
+
 
 [kingdonb/eks-cluster]: https://github.com/kingdonb/eks-cluster
+[kingdonb/taking-bartholo]: https://github.com/kingdonb/eks-cluster
+[kingdonb/stats-tracker-ghcr]: https://github.com/kingdonb/eks-cluster
+[tobiaskuntzsch/kubernetes-operator]: https://gitlab.com/tobiaskuntzsch/kubernetes-operator
+[ManageIQ/kubeclient]: https://github.com/ManageIQ/kubeclient
 
 # ToDo
 
@@ -193,11 +318,11 @@ Gotta go pretty fast
 
 # Image
 
-![](lavie.png "Lavie"){:width='100' height='100'}
+![](images/fluxqr.jpeg "Lavie"){:width='100' height='100'}
 
 # Image: Reflect
 
-![](shocker.jpg){:relative_height='80' reflect_ratio='0.5'}
+![](images/fluxqr.jpeg){:relative_height='80' reflect_ratio='0.5'}
 
 # Image: Background (1)
 
@@ -207,7 +332,7 @@ Gotta go pretty fast
 ## Properties
 
 background-image
-:   lavie.png
+:   images/fluxqr.jpeg
 
 background-image-relative-width
 :   50
@@ -222,7 +347,7 @@ background-image-relative-margin-right
 
 # Image: Background (2)
 
-![](lavie.png){:relative_width="30" align="right" relative_margin_right="-5"}
+![](images/fluxqr.jpeg){:relative_width="30" align="right" relative_margin_right="-5"}
 
 * Right justified backgorund image
 * Specify in slide
@@ -232,55 +357,15 @@ background-image-relative-margin-right
 
 Relative image sizes
 
-![](usagi.png){:caption="USAGI" relative_height="50"}
+![](images/fluxqr.jpeg){:caption="USAGI" relative_height="50"}
 
 # External image
 
 Download an image from a URL
 
-![](https://raw.githubusercontent.com/rabbit-shocker/rabbit/master/data/rabbit/image/cozmixng-images/cozmixchu.png "COZMIX Chu")
+![](images/fluxqr.jpeg "COZMIX Chu")
 
-# Math. expressions
-
-* TeX format
-* Backends
-  * LaTeX
-
-# LaTeX
-
-$$
-$f(x)=\displaystyle\int_{-\infty}^x~e^{-t^2}dt$
-
-\LaTeX
-$$
-
-# EPS
-
-Create EPS ahead of time
-
-![](equation.eps){:relative_width="80"}
-
-# SVG
-
-![](spiral.svg){:relative_height="100"}
-
-# Dia
-
-![](rabbit.dia){:relative_width="90"}
-
-# GIMP
-
-![](rabbit.xcf){:relative_height="100"}
-
-# Word Wrapping
-
-looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
-
-# Source
-
-The following is source code:
-
-# comment
+: comment
 def method_name
   body
 end
