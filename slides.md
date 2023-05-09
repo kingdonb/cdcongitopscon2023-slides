@@ -57,7 +57,7 @@ Gotta go pretty fast
 
 # Flux Talks
 
-![](fluxqr.jpeg "QR Code"){:width='100' height='100'}
+![](images/fluxqr.jpeg "QR Code"){:width='100' height='100'}
 
 # Intro (me)
 
