@@ -1,7 +1,7 @@
-# wasm
+# Exotic Runtimes
 
 subtitle
-:   Exotic Runtime Targets for GitOps Delivery Pipelines (wasm, ruby, k8s, gitops)
+:   Ruby and Wasm on Kubernetes and GitOps Delivery Pipelines
 
 author
 :   Kingdon Barrett
@@ -26,7 +26,6 @@ end-time
 
 # Lightning Talk
 
-
 Gotta go pretty fast
 
 * Try not to talk so fast
@@ -39,8 +38,11 @@ Gotta go pretty fast
 * Hi
   I'm Kingdon Barrett
 * Find me on YouTube or Mastodon
-* youtube.com/@yebyen
-* hachyderm.io/@yebyen
+* [youtube.com/@yebyen][]
+* [hachyderm.io/@yebyen][]
+
+[youtube.com/@yebyen]: https://youtube.com/@yebyen
+[hachyderm.io/@yebyen]: https://hachyderm.io/@yebyen
 
 # Job
 
@@ -52,30 +54,30 @@ Gotta go pretty fast
 # Flux
 
 * Flux Bug Scrub - weekly [fluxcd.io/#calendar][]
-* ?: OS _Support_ Engineer
-* (I use our OSS deeply)
-* Lean into OSS solutions
+* What: OS _Support_ Engineer
+* (I try to use our OSS deeply)
+* Lean into fully OSS solutions
 
 [fluxcd.io/#calendar]: https://fluxcd.io/#calendar
 
 # Flux Talks
 
-![](images/fluxqr.jpeg "bit.ly/gitopscon2023"){:width='350' height='350'}
+![](images/fluxqr.jpeg "bit.ly/gitopscon2023"){:width='330' height='330'}
 
 # Intro (me)
 
 * On YouTube - I'm new here
 * Let's Study: Arabic
-* Cloud Jockey: %radio ⚡️🌩️🌀
-* Live Coding: Ruby + Kubernetes
+* Cloud Jockey: %radio DJ
+* Live Coding: Ruby + K8s
 * Plz mash like & subscribe
 
 # Wasm and Ruby
 
-* *What is this for*
+* *What are we here for today*
 * What is "untrusted code"
 * Why do we want to run it
-* Healthy skepticism about (even our own) code
+* Healthy skepticism about (yes, even our own) code
 
 # Ruby
 
@@ -118,9 +120,10 @@ Gotta go pretty fast
 # Why Ruby
 
 * I used Ruby since 2002(?)
+  * Thanks Eivind (attyz)
 * Comfort and familiarity
-* Top Notch Debugging ++
-* Bundler, Fibers, Ruby 3.0
+  * Top Notch Debugging ++
+  * Bundler, Fibers, Ruby 3.0
 * for faster time to market
 
 # Ruby Solutions
@@ -133,13 +136,13 @@ Gotta go pretty fast
 
 # Web Assembly in Ruby
 
-* Ruby is interpreted language
+* Ruby: interpreted language
 * gem: wasmer-ruby
 * gem: wasmtime-rb
-* Run Web Assemblies in Ruby
+* Run Wasms in Ruby
 * What is a Web Assembly?
 
-# Bytecode Runtime Format
+# Runtime Format
 
 * Can run Ruby in Wasm?
 * Yes, but first...
@@ -229,15 +232,15 @@ Gotta go pretty fast
 * I built some things in Wasm
 * Break misconceptions
 * Follow good examples
-* How are we going to use this?
+* How are we going to use it?
 * Let's solve real problem now
 
 # Problem to explore
 
 * GitHub Packages problem - DX Engineer solution
 * fluxcd/flagger/
-* [pkgs/container/flagger][]
-* Need to know how many downloads for each package
+  * [pkgs/container/flagger][]
+  * Need to know how many downloads for each package
 
 [pkgs/container/flagger]: https://github.com/fluxcd/flagger/pkgs/container/flagger
 
@@ -249,47 +252,61 @@ Gotta go pretty fast
 # I built some things
 
 * Blog service: GitHub [kingdonb/taking-bartholo][]
-  * GitOps enabled via Helm Controller
-  * Helm + Helmet library chart
+* GitOps enabled via Helm Controller
+* Helm + Helmet library chart
   * At this point I began to understand
-    * Why Fermyon isn't using K8s or Helm?
-    * This would be really hard without Flux
+
+# I built some things
+
+* At this point I began to understand some things
+  * Fermyon isn't using K8s or Helm
+  * This would be hard without Flux (used Flux OCI to ship content separately from runtime, novel!)
 
 # I built more things
 
 * Kubernetes operator: [kingdonb/stats-tracker-ghcr][]
-  * Fetch from URL (in ruby)
+  * Fetch from URL (in Ruby)
+  * Write to file, pass in fs context
   * Parse HTML (in rust)
   * Return number as string (WASI!)
-  * Parse number (we're back in Ruby)
+
+# Finally
+
+* Kubernetes operator: [kingdonb/stats-tracker-ghcr][]
+  * Parse number (back in Ruby)
+  * Store the number we parsed out of scraped content in CRD status
+  * (Come back and retrieve it later)
 
 # Based on
 
 * Kubernetes operator: (GitLab) [tobiaskuntzsch/kubernetes-operator][]
-  * Wonderful example for learning about Operators with Ruby
+  * Wonderful ex. to build with Ruby
   * Register CRD, Register `upsert`
-  * Register `delete` - manages your Finalizers
+  * Reg. `delete` - manages Finalizers
 
 # Based on (dependency)
 
 * Kubeclient gem: GitHub [ManageIQ/kubeclient][]
   * Also easy to use
   * Server-side apply only (!)
+  * (about SSA, Flux uses this too)
+    * can account for admission controllers, wait for ready, ... lots of benefits here!
 
 # Out of time
 
-* Lightning talk - Fin
-* Dive into these topics in more depth
-  * OSS Summit
-  * More Ruby: Wednesday
-  * Go, TypeScript: Thursday
+* Lightning talk - all for today!
+* Dive into topics further
+  * OSS Summit later this week
+    * Ruby: ContainerCon (Wed 11:00am)
+    * Go: OpenGovCon (Thu 4:05pm)
+      * with co-presenter Will Christensen
 
 # Operator isn't finished
 
 * Let's do it live (today)
-* On YouTube
-* (We'll hear how it went tomorrow)
-* It is really 98% finished already :D
+* On YouTube (.com/@yebyen)
+* (Hear how it went tmrw.)
+* It is 98% finished already :D
 
 # Let's do it live
 
@@ -300,247 +317,8 @@ Gotta go pretty fast
 
 # Thank You
 
-
-
 [kingdonb/eks-cluster]: https://github.com/kingdonb/eks-cluster
 [kingdonb/taking-bartholo]: https://github.com/kingdonb/eks-cluster
 [kingdonb/stats-tracker-ghcr]: https://github.com/kingdonb/eks-cluster
 [tobiaskuntzsch/kubernetes-operator]: https://gitlab.com/tobiaskuntzsch/kubernetes-operator
 [ManageIQ/kubeclient]: https://github.com/ManageIQ/kubeclient
-
-# ToDo
-
-  * Inline images
-  * Jump to a link
-  * Sound
-  * Video
-  * 3D
-
-# Image
-
-![](images/fluxqr.jpeg "Lavie"){:width='100' height='100'}
-
-# Image: Reflect
-
-![](images/fluxqr.jpeg){:relative_height='80' reflect_ratio='0.5'}
-
-# Image: Background (1)
-
-* Background image
-* Centering by default
-
-## Properties
-
-background-image
-:   images/fluxqr.jpeg
-
-background-image-relative-width
-:   50
-
-{::comment}
-background-image-align
-:   right
-
-background-image-relative-margin-right
-:   3
-{:/comment}
-
-# Image: Background (2)
-
-![](images/fluxqr.jpeg){:relative_width="30" align="right" relative_margin_right="-5"}
-
-* Right justified backgorund image
-* Specify in slide
-  * \{:align="right"\}
-
-# Image size
-
-Relative image sizes
-
-![](images/fluxqr.jpeg){:caption="USAGI" relative_height="50"}
-
-# External image
-
-Download an image from a URL
-
-![](images/fluxqr.jpeg "COZMIX Chu")
-
-: comment
-def method_name
-  body
-end
-
-End of source code.
-
-# Source: Highlighted
-
-The following is source code:
-
-# comment
-def method_name
-  body
-end
-{: lang="ruby"}
-
-End of source code.
-
-# Quotation
-
-> You take the ''red pill'', you stay in Wonderland and 
-> I show you how deep the ''rabbit-hole'' goes.
-
-# Enumeration
-
-* Level 1-1
-  * Level 2-1
-* Level 3-1
-* Level 3-2
-  * Level 2-2
-* Level 1-2
-
-# Labeled list
-
-Rabbit
-:   USAGI
-
-Tortoise
-:   KAME
-
-USAGI
-:   Rabbit
-
-# Table
-
-| Heading 1 | Heading 2 |
-|---------|--------|
-| content 1 | content 2 |
-| very long content 3 | veeeery looooooooooooooooooooooong content 4 |
-
-# Op.: Move
-
-Next page
-:   Bindings for next page/Left click
-
-n, f, j, l, Spc, Ret, +, ↓, →, ...
-
-Previous page
-:   Bindings for prev. page/Center click
-
-p, b, k, h, BS, Del, -, ↑, ←, ...
-
-# Op.: Advanced move
-
-Go to the title page
-:   a, 0, <, Home
-
-Go to page n
-:   1-9, +Ctrl=+10, +Alt=+20
-
-Go to the last page
-:   e, $, >, End
-
-# Op.: On stage (1)
-
-Toggle full screen
-:   F5, F10, F11, Gesture↓↑
-
-Toggle index mode
-:   i
-
-Go to the page
-:   Double click on the desired page
-
-# Op.: On stage (2)
-
-Cache all slides
-:   c
-
-Toggle info window
-:   I
-
-# Op.: On stage (3)
-
-Magnifier
-:   Ctrl + right click
-
-Change scale by wheel
-
-Spotlight
-:   Double right clicks
-
-Change radius by wheel
-
-# Op.: On stage (4)
-
-Graffiti
-:   Popup menu (right click) →
-"Graffiti mode"
-
-Mouse gesture
-:   Right button drag
-
-# Op.: On stage (5)
-
-Whiteout
-:   W
-
-Blackout
-:   B
-
-# Op.: Save
-
-Screenshot
-:   Save each page as an image
-
-s
-
-Print
-:   Print each page as PS/PDF
-
-Ctrl+p
-
-# Op.: Display
-
-Redraw
-:   Ctrl+l
-
-Reload theme
-:   t, r
-
-Reset slide adjustment
-:   Alt+a
-
-# Op.: Hole
-
-Expand the hole
-:   E
-
-Narrow the hole
-:   N
-
-# Op.: Search
-
-Search forward
-:   C-s, /
-
-Search backward
-:   C-r, ?
-
-Quit search
-:   C-g
-
-# Op.: Quit
-
-Quit
-:   q, Escape
-
-Iconify
-:   z
-
-# Conclusion
-
-* A presentation tool
-* Multi platform
-* Feat./UI: High & Unique
-* Emphasize keybord shortcuts
-  * UI/text based source
