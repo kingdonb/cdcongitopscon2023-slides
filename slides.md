@@ -31,7 +31,7 @@ Gotta go pretty fast
 * Try not to talk so fast
 * Don't want to lose you
 * Many twists and turns
-* Rabbit-shocker timer to help keep honest!
+* Rabbit-shocker timer to help keep honest! (See Flux and Flagger logos?)
 
 # Intro
 
@@ -46,14 +46,16 @@ Gotta go pretty fast
 
 # Job
 
-* Weaveworks: Dev Experience
-* OSS Engineer since 2021
-* Second S is for ~~Smooth Operator~~ (no, it's Support!)
-* I work on Flux (Maintainer)
+* Weaveworks: Developer Experience
+* OSS Engineer @ WW since 2021
+* Second S is for ~~Smooth Operator~~
+  (no, it's Open Source **Support**!)
+* Work on Flux (Slack/ web/ community maintainer, former Flux v1 maintainer)
 
 # Flux
 
-* Flux Bug Scrub - weekly [fluxcd.io/#calendar][]
+* Flux Bug Scrub - weekly
+  [fluxcd.io/#calendar][]
 * What: OS _Support_ Engineer
 * (I try to use our OSS deeply)
 * Lean into fully OSS solutions
@@ -62,22 +64,23 @@ Gotta go pretty fast
 
 # Flux Talks
 
-![](images/fluxqr.jpeg "bit.ly/gitopscon2023"){:width='330' height='330'}
+![](images/fluxqr.jpeg "bit.ly/gitopscon2023"){:width='250' height='250'}
 
 # Intro (me)
 
 * On YouTube - I'm new here
 * Let's Study: Arabic
 * Cloud Jockey: `%radio` DJ
-* Live Coding: Ruby + K8s
-* Plz mash like & subscribe
+* Live Coding: Ruby + Kubernetes
+* (Please mash like & subscribe button)
 
 # Wasm and Ruby
 
 * *What are we here for today*
 * What is "untrusted code"
 * Why do we want to run it
-* Healthy skepticism about (yes, even our own) code
+* Healthy skepticism about
+  (yes, even our own) code
 
 # Ruby
 
@@ -85,28 +88,29 @@ Gotta go pretty fast
 * Yes
 * Why would we do that?
   * This is a serious question
-  * Do you know why Wasm?
+  * Do you know why Wasm? (What is Wasm?)
 
 # Why Wasm
 
 * Secure Foundation
 * "Bytecode Alliance"
 * Portable artifacts
-  * with language independence
+  * with a degree of language independence
 
 # Why Wasm
 
 * Frankly I cannot sell Wasm
-* No commission either
-* If you take it, I get nothing
-* I think it will be useful
-* Let's find out together
+  * No commission either
+* If you take it with you, I get nothing
+  * I think it will be useful
+  * Let's find out together
 
 # Why Kubernetes
 
 * For Flux and GitOps
-* If you chose Kubernetes, you already know why you did (!)
-* Declarative, versioned, immutable artifacts
+* If you chose Kubernetes,
+  you already know why you did (!)
+* Declarative, versioned, immutable artifacts describe a desired state
 * Self-healing infrastructure
 
 # Compiled Languages
@@ -117,22 +121,35 @@ Gotta go pretty fast
 * C#
 * ... (value for you all as well)
 
-# Why Ruby
+# History as a Rubyist
 
 * I used Ruby since 2002(?)
-  * Thanks Eivind (attyz)
+  * Thanks Eivind - Enlightenment, E16, E17, `#gah` on ~~EFnet~~, ~~Freenode~~, IRC (I'm old now)
+  * First "permanent job"
+    at Metrix Matrix in Rochester, NY
+  * Second "permanent job"
+    at University of Notre Dame OIT, South Bend
+
+# Why Ruby?
+
+* I know it better than other languages
 * Comfort and familiarity
   * Top Notch Debugging ++
   * Bundler, Fibers, Ruby 3.0
-* for faster time to market
+* MVP: for faster time to market
 
 # Ruby Solutions
 
 * To run a website
 * To connect a database
-* scrape content from internet
-* To build an IRC bot
-* No compiler needed, duck typing, object orientation
+  * scrape content from internet
+  * To build an IRC bot
+  * No compiler, duck typing, object orientation, imperative, monkey patching, ease of use
+
+# More Ideas: Ruby Solutions
+
+* To build a K8s Operator, of course
+  because why not!
 
 # Web Assembly in Ruby
 
@@ -169,15 +186,15 @@ Gotta go pretty fast
 # Features: Format
 
 * What is a system interface?
-* Stdio
+* Stdio, filesystem, (restricted) HTTP/S
 * There is no network
 * How do you run a server?
-  * WAGI (it's like CGI!)
+  * WAGI (like CGI!) offload responsibility of conn
 
 # Omitted Features
 
-* Wasm has no string type
-* Numbers and well-defined data structures only(ish)
+* Has no string type, tough limitations
+* Numbers and well-defined data structures only(ish) - hard for Ruby
 * Allocate memory, make ptr
 * Pass ptr to str+length/size
 
@@ -186,19 +203,21 @@ Gotta go pretty fast
 * I don't want to do pointer math at all
 * Could not figure out how do:
   * Wasm as library
-* I spent some time on this, couldn't figure unfortunately
+* I spent some time on this, couldn't make it work in Ruby unfortunately
 
 # Ruby and Wasm lib
 
-* I need string return values
-* Reverted to WASI
-* We can parse the output 👍
-* Now let's try to solve a real problem
+* I need string params and return values
+* Reverted to WASI for this
+* We can parse the output, pass in fs dir
+* Now let's try to solve a real problem with some Wasm in Ruby!
 
 # What is Spin?
 
-* "Serverless" framework
-* Test locally
+* My first entrypoint to Wasm
+* Great docs about Ruby capabilities, references to relevant projects + docs
+* "Serverless" - compose Wasms + run
+* Test locally, no Kubernetes needed, no "linking" - works like controller/router
 
 # What is Spin?
 
@@ -238,49 +257,52 @@ Gotta go pretty fast
 # Why are we here?
 
 * Hope to gain:
-* Testability
-* Reusability
-* Type safety btw languages
-* Capacity for polyglot teams
+  * Testability
+  * Reusability
+  * Type safety between languages
+* Capacity for polyglot teams to work together, benefit from specialization in many languages
 
 # How about we dive in?
 
 * I built some things in Wasm
-* Break misconceptions
-* Follow good examples
+  * Break misconceptions
+  * Follow good examples
 * How are we going to use it?
-* Let's solve real problem now
+* Let's solve a real problem now
 
 # Problem to explore
 
-* GitHub Packages problem - DX Engineer solution
+* GitHub Packages problem - DX needs to know how many downloads over time
 * fluxcd/flagger/
   * [pkgs/container/flagger][]
-  * Need to know how many downloads for each package
+  * GitHub does not expose this value on any API afaict, so we scrape some HTML and parse it!
 
 [pkgs/container/flagger]: https://github.com/fluxcd/flagger/pkgs/container/flagger
 
 # I built some things
 
-* EKS cluster: Find on GitHub [kingdonb/eks-cluster][]
+* EKS cluster: Find on GitHub
+  [kingdonb/eks-cluster][]
   * with Flux bootstrap (eksctl+flux 2.0.0-rc.2)
 
 # I built some things
 
-* Blog service: GitHub [kingdonb/taking-bartholo][]
+* Blog service: GitHub
+  [kingdonb/taking-bartholo][]
 * GitOps via Helm Controller
 * Helm + Helmet library chart
-  * At this point I understood pain
+  * At this point I understood pain of running Wasm+Kubernetes (not pain from Ruby... yet)
 
 # I built some things
 
-* At this point I began to understand some things
+* I began to understand some things
   * Fermyon isn't using K8s or Helm
-  * This would be hard without Flux (used Flux OCI to ship content separately from runtime, novel!)
+  * This would be v. hard without Flux (used Flux OCI to ship content separately from runtime, a novel application of Flux's OCI Artifacts!)
 
 # I built more things
 
-* Kubernetes operator: [kingdonb/stats-tracker-ghcr][]
+* Kubernetes operator: GitHub
+  [kingdonb/stats-tracker-ghcr][]
   * Fetch from URL (in Ruby)
   * Write to file, pass in fs context
   * Parse HTML (in rust)
@@ -288,21 +310,24 @@ Gotta go pretty fast
 
 # Finally
 
-* Kubernetes operator: [kingdonb/stats-tracker-ghcr][]
+* Kubernetes operator: GitHub
+  [kingdonb/stats-tracker-ghcr][]
   * Parse number (back in Ruby)
   * Store the number we parsed out of scraped content in CRD status
   * (Come back and retrieve it later)
 
 # Based on
 
-* Kubernetes operator: (GitLab) [tobiaskuntzsch/kubernetes-operator][]
-  * Wonderful ex. to build with Ruby
+* Kubernetes operator: (GitLab)
+  [tobiaskuntzsch/kubernetes-operator][]
+  * Wonderful example to build with Ruby
   * Register CRD, Register `upsert`
   * Reg. `delete` - manages Finalizers
 
 # Based on (dependency)
 
-* Kubeclient gem: GitHub [ManageIQ/kubeclient][]
+* Kubeclient gem: GitHub
+  [ManageIQ/kubeclient][]
   * Also easy to use
   * Server-side apply only (!)
   * (about SSA, Flux uses this too)
@@ -310,30 +335,38 @@ Gotta go pretty fast
 
 # Out of time
 
-* Lightning talk - all for today!
+* Lightning talk - that's all for today!
 * Dive into topics further
   * OSS Summit later this week
-    * Ruby: ContainerCon (Wed 11:00am)
-    * Go: OpenGovCon (Thu 4:05pm)
-      * with co-presenter Will Christensen
+    * More Ruby: ContainerCon (Wed 11:00am)
+    * Go/TypeScript: OpenGovCon (Thu 4:05pm)
+      * with co-presenter Will C, Defense Unicorns
 
 # Operator isn't finished
 
-* Let's do it live (today)
-* On YouTube (.com/@yebyen)
-* (Hear how it went tmrw.)
-* It is 98% finished already :D
+* Let's do it live (for real, I mean today)
+* On YouTube ([.com/@yebyen](https://youtube.com/live/hSZtVahbP-Q))
+* We will hear how it went tomorrow, and more about each project
+* (Don't worry, 98% finished already `:D`)
 
 # Let's do it live
 
-* I wrote this in an hour live
-* Code is there
-* Only missing a tiny bit
-* My first Rust program!
+* I wrote this app, so far, in an hour (live)
+* Code is there, a few things not working yet
+* Only missing a bit... we'll tour the code!
+* First Rust app - be gentle (it was fun!)
 
 # Thank You
 
-* Slides: [kingdonb/cdcongitopscon2023-slides][] on GitHub
+* Visit us for the rest of the week:
+  [bit.ly/gitopscon2023](https://bit.ly/gitopscon2023)
+* Find these slides:
+  [kingdonb/cdcongitopscon2023-slides][]
+  on GitHub
+
+# Thank You
+
+![](images/slidesqr.png "github.com/kingdonb/cdcongitopscon2023-slides"){:width='190' height='190'}
 
 [kingdonb/eks-cluster]: https://github.com/kingdonb/eks-cluster
 [kingdonb/taking-bartholo]: https://github.com/kingdonb/eks-cluster
