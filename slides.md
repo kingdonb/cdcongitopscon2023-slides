@@ -68,7 +68,7 @@ Gotta go pretty fast
 
 * On YouTube - I'm new here
 * Let's Study: Arabic
-* Cloud Jockey: %radio DJ
+* Cloud Jockey: `%radio` DJ
 * Live Coding: Ruby + K8s
 * Plz mash like & subscribe
 
@@ -197,15 +197,25 @@ Gotta go pretty fast
 
 # What is Spin?
 
-* Fermyon "Serverless" framework
+* "Serverless" framework
+* Test locally
+
+# What is Spin?
+
+* "Serverless" framework
 * Test locally
 * Run on Fermyon Cloud
+
+# What is Spin?
+
+* "Serverless" framework
+* Test locally
 * (Run on Hippo Factory)
   * This is OSS Summit!
 
 # What is Spin?
 
-* Fermyon "Serverless" framework
+* "Serverless" framework
 * Test locally
 * Run on Fermyon Cloud
 * (Run on Hippo Factory)
@@ -213,11 +223,17 @@ Gotta go pretty fast
 
 # What is Spin?
 
-* Fermyon "Serverless" framework
+* Serverless framework
 * Test locally
-* Run on Fermyon Cloud
 * (Run on Hippo Factory)
   * This is GitOpsCon!
+
+# What is Spin?
+
+* Serverless framework
+* Test locally
+* (Run on Kubernetes!)
+  * This is GitOpsCon, after all
 
 # Why are we here?
 
@@ -252,9 +268,9 @@ Gotta go pretty fast
 # I built some things
 
 * Blog service: GitHub [kingdonb/taking-bartholo][]
-* GitOps enabled via Helm Controller
+* GitOps via Helm Controller
 * Helm + Helmet library chart
-  * At this point I began to understand
+  * At this point I understood pain
 
 # I built some things
 
@@ -317,8 +333,11 @@ Gotta go pretty fast
 
 # Thank You
 
+* Slides: [kingdonb/cdcongitopscon2023-slides][] on GitHub
+
 [kingdonb/eks-cluster]: https://github.com/kingdonb/eks-cluster
 [kingdonb/taking-bartholo]: https://github.com/kingdonb/eks-cluster
 [kingdonb/stats-tracker-ghcr]: https://github.com/kingdonb/eks-cluster
 [tobiaskuntzsch/kubernetes-operator]: https://gitlab.com/tobiaskuntzsch/kubernetes-operator
 [ManageIQ/kubeclient]: https://github.com/ManageIQ/kubeclient
+[kingdonb/cdcongitopscon2023-slides]: https://github.com/kingdonb/cdcongitopscon2023-slides
