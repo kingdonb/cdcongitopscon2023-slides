@@ -13,25 +13,25 @@ theme
 :   rabbit-theme-wwinternalstyle
 
 date
-:   2023-05-09
+:   2023-05-10
 
 allotted-time
-:   15m
+:   40m
 
 start-time
-:   2023-05-09T15:05:00-07:00
+:   2023-05-10T11:10:00-07:00
 
 end-time
-:   2023-05-09T15:20:00-07:00
+:   2023-05-10T11:50:00-07:00
 
-# Lightning Talk
+# Full Session Today
 
-Gotta go pretty fast
+ICYMI:
 
-* Try not to talk so fast
-* Don't want to lose you
-* Many twists and turns
-* Rabbit-shocker timer to help keep honest! (See Flux and Flagger logos?)
+* Yesterday, this was a lightning talk
+* Will repeat most of that info today
+* (Won't assume you've seen it)
+* Check out GitOpsCon when those sessions get posted to YouTube!
 
 # Intro
 
@@ -236,23 +236,15 @@ Gotta go pretty fast
 
 * "Serverless" framework
 * Test locally
-* Run on Fermyon Cloud
 * (Run on Hippo Factory)
-  * ~~This is OSS Summit!~~
-
-# What is Spin?
-
-* Serverless framework
-* Test locally
-* (Run on Hippo Factory)
-  * This is GitOpsCon!
+  * You're pulling our leg, right?
 
 # What is Spin?
 
 * Serverless framework
 * Test locally
 * (Run on Kubernetes!)
-  * This is GitOpsCon, after all
+  * Did I mention I'm a Flux maintainer
 
 # Why are we here?
 
@@ -333,28 +325,35 @@ Gotta go pretty fast
   * (about SSA, Flux uses this too)
     * can account for admission controllers, wait for ready, ... lots of benefits here!
 
-# Out of time
+# This is the end
 
-* Lightning talk - that's all for today!
-* Dive into topics further
-  * OSS Summit later this week
-    * More Ruby: ContainerCon (Wed 11:00am)
+* of the Lightning talk - but today!
+* We can dive into topics further
+  * (before we do - I've more talks tomorrow)
+    * Dev-Driven Automated Deployments Like a Cloud Native Pro (Thu 11:00am)
+      * Juozas Gaigalas, Weaveworks (I'll be standing in)
     * Go/TypeScript: OpenGovCon (Thu 4:05pm)
       * with co-presenter Will C, Defense Unicorns
 
-# Operator isn't finished
+# ~~Operator isn't finished~~
 
-* Let's do it live (for real, I mean today)
-* On YouTube ([.com/@yebyen](https://youtube.com/live/hSZtVahbP-Q))
-* We will hear how it went tomorrow, and more about each project
-* (Don't worry, 98% finished already `:D`)
+* OK, still not finished, but it works now!
+* Did it live on YouTube ([.com/@yebyen](https://youtube.com/live/hSZtVahbP-Q))
+* 3 hours ago - JIT presenting FTW!
+* I am very tired, I hope it doesn't show
 
-# Let's do it live
+# How is the code?
 
-* I wrote this app, so far, in an hour (live)
+* Wrote the operator from e2e in 3h
 * Code is there, a few things not working yet
 * Only missing a bit... we'll tour the code!
 * First Rust app - be gentle (it was fun!)
+
+# Rust App
+
+* Let's start with the Rust app, then work our way out
+* We'll come back to see Taking Bartholomew for a Spin
+* How is this deployed using FluxCD?
 
 # Thank You
 
