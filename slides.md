@@ -368,8 +368,8 @@ ICYMI:
 ![](images/slidesqr.png "github.com/kingdonb/cdcongitopscon2023-slides"){:width='190' height='190'}
 
 [kingdonb/eks-cluster]: https://github.com/kingdonb/eks-cluster
-[kingdonb/taking-bartholo]: https://github.com/kingdonb/eks-cluster
-[kingdonb/stats-tracker-ghcr]: https://github.com/kingdonb/eks-cluster
+[kingdonb/taking-bartholo]: https://github.com/kingdonb/taking-bartholo
+[kingdonb/stats-tracker-ghcr]: https://github.com/kingdonb/stats-tracker-ghcr
 [tobiaskuntzsch/kubernetes-operator]: https://gitlab.com/tobiaskuntzsch/kubernetes-operator
 [ManageIQ/kubeclient]: https://github.com/ManageIQ/kubeclient
 [kingdonb/cdcongitopscon2023-slides]: https://github.com/kingdonb/cdcongitopscon2023-slides
